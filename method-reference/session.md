@@ -6,7 +6,7 @@ title: Method Reference - Session
 
 ### __construct
 
-    void SpotifyWebAPI\Session::__construct(string $clientId, string $clientSecret, string $redirectUri, \SpotifyWebAPI\Request $request)
+     SpotifyWebAPI\Session::__construct(string $clientId, string $clientSecret, string $redirectUri, \SpotifyWebAPI\Request $request)
 
 Constructor<br>
 Set up client credentials.
@@ -17,9 +17,6 @@ Set up client credentials.
 * `$redirectUri` **string** - Optional. The redirect URI.
 * `$request` **\SpotifyWebAPI\Request** - Optional. The Request object to use.
 
-
-#### Return values
-* **void** 
 
 
 

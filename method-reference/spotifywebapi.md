@@ -6,7 +6,7 @@ title: Method Reference - SpotifyWebAPI
 
 ### __construct
 
-    void SpotifyWebAPI\SpotifyWebAPI::__construct(\SpotifyWebAPI\Request $request)
+     SpotifyWebAPI\SpotifyWebAPI::__construct(\SpotifyWebAPI\Request $request)
 
 Constructor<br>
 Set up Request object.
@@ -14,9 +14,6 @@ Set up Request object.
 #### Arguments
 * `$request` **\SpotifyWebAPI\Request** - Optional. The Request object to use.
 
-
-#### Return values
-* **void** 
 
 
 
@@ -356,26 +353,20 @@ Get an artist's top tracks in a country.<br>
 
 
 
-### getFeaturedPlaylists
+### getAudioFeatures
 
-    array|object SpotifyWebAPI\SpotifyWebAPI::getFeaturedPlaylists(array|object $options)
+    array|object SpotifyWebAPI\SpotifyWebAPI::getAudioFeatures(array $trackIds)
 
-Get Spotify featured playlists.<br>
+Get track audio features.<br>
 Requires a valid access token.<br>
-[https://developer.spotify.com/web-api/get-list-featured-playlists/](https://developer.spotify.com/web-api/get-list-featured-playlists/)
+[https://developer.spotify.com/web-api/get-several-audio-features/](https://developer.spotify.com/web-api/get-several-audio-features/)
 
 #### Arguments
-* `$options` **array\|object** - Optional. Options for the playlists.
-    * string locale Optional. Language to show playlists in, for example sv_SE.
-    * string country Optional. An ISO 3166-1 alpha-2 country code. Show playlists from this country.
-    * string timestamp Optional. A ISO 8601 timestamp. Show playlists relevant to this date and time.
-    * int limit Optional. Limit the number of playlists.
-    * int offset Optional. Number of playlists to skip.
-
+* `$trackIds` **array** - IDs of the tracks.
 
 
 #### Return values
-* **array\|object** The featured playlists. Type is controlled by SpotifyWebAPI::setReturnAssoc().
+* **array\|object** The tracks&#039; audio features. Type is controlled by SpotifyWebAPI::setReturnAssoc().
 
 
 
@@ -441,6 +432,43 @@ Requires a valid access token.<br>
 
 #### Return values
 * **array\|object** The list of playlists. Type is controlled by SpotifyWebAPI::setReturnAssoc().
+
+
+
+### getFeaturedPlaylists
+
+    array|object SpotifyWebAPI\SpotifyWebAPI::getFeaturedPlaylists(array|object $options)
+
+Get Spotify featured playlists.<br>
+Requires a valid access token.<br>
+[https://developer.spotify.com/web-api/get-list-featured-playlists/](https://developer.spotify.com/web-api/get-list-featured-playlists/)
+
+#### Arguments
+* `$options` **array\|object** - Optional. Options for the playlists.
+    * string locale Optional. Language to show playlists in, for example sv_SE.
+    * string country Optional. An ISO 3166-1 alpha-2 country code. Show playlists from this country.
+    * string timestamp Optional. A ISO 8601 timestamp. Show playlists relevant to this date and time.
+    * int limit Optional. Limit the number of playlists.
+    * int offset Optional. Number of playlists to skip.
+
+
+
+#### Return values
+* **array\|object** The featured playlists. Type is controlled by SpotifyWebAPI::setReturnAssoc().
+
+
+
+### getGenreSeeds
+
+    array|object SpotifyWebAPI\SpotifyWebAPI::getGenreSeeds()
+
+Get a list of possible seed genres.<br>
+Requires a valid access token.<br>
+[https://developer.spotify.com/web-api/get-recommendations/](https://developer.spotify.com/web-api/get-recommendations/)#available-genre-seeds
+
+
+#### Return values
+* **array\|object** All possible seed genres. Type is controlled by SpotifyWebAPI::setReturnAssoc().
 
 
 
@@ -539,6 +567,50 @@ Requires a valid access token.<br>
 
 #### Return values
 * **array\|object** The user&#039;s saved tracks. Type is controlled by SpotifyWebAPI::setReturnAssoc().
+
+
+
+### getMyTop
+
+    array|object SpotifyWebAPI\SpotifyWebAPI::getMyTop(string $type, $options)
+
+Get the current user's top tracks or artists.<br>
+Requires a valid access token.<br>
+[https://developer.spotify.com/web-api/get-users-top-artists-and-tracks/](https://developer.spotify.com/web-api/get-users-top-artists-and-tracks/)
+
+#### Arguments
+* `$type` **string** - The type of entity to fetch.
+* `$options` **mixed**
+
+
+#### Return values
+* **array\|object** A list with the requested top entity. Type is controlled by SpotifyWebAPI::setReturnAssoc().
+
+
+
+### getRecommendations
+
+    array|object SpotifyWebAPI\SpotifyWebAPI::getRecommendations(array|object $options)
+
+Get recommendations based on artists, tracks, or genres.<br>
+Requires a valid access token.<br>
+[https://developer.spotify.com/web-api/get-recommendations/](https://developer.spotify.com/web-api/get-recommendations/)
+
+#### Arguments
+* `$options` **array\|object** - Optional. Options for the recommendations.
+    * int limit Optional. Limit the number of recommendations.
+    * string market Optional. An ISO 3166-1 alpha-2 country code, provide this if you wish to apply Track Relinking.
+    * mixed max_* Optional. Max value for one of the tunable track attributes.
+    * mixed min_* Optional. Min value for one of the tunable track attributes.
+    * array seed_artists Artist IDs to seed by.
+    * array seed_genres Genres to seed by. Call SpotifyWebAPI::getGenreSeeds() for a complete list.
+    * array seed_tracks Track IDs to seed by.
+    * mixed target_* Optional. Target value for one of the tunable track attributes.
+
+
+
+#### Return values
+* **array\|object** The requested recommendations. Type is controlled by SpotifyWebAPI::setReturnAssoc().
 
 
 
